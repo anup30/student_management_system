@@ -1,0 +1,4 @@
+in this students app,
+if i delete a Student, it's data gets deleted from database.
+but corresponding User(connected by OneToOneField, see in models.py) is not getting deleted, 
+it's still in database. ie in auth_user of db.sqlite3. how to fix this.
