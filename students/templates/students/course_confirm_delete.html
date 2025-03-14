@@ -1,0 +1,35 @@
+{% extends 'students/base.html' %}
+
+{% block title %}Delete Course - Student Management System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card border-danger shadow">
+            <div class="card-header bg-danger text-white">
+                <h3 class="card-title mb-0">Delete Course</h3>
+            </div>
+            <div class="card-body">
+                <p class="lead">Are you sure you want to delete {{ course.name }} ({{ course.code }})?</p>
+                <p class="text-muted">This action cannot be undone. This will remove the course and all its associations with students.</p>
+                
+                {% if course.student_set.exists %}
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle"></i> Warning: This course has {{ course.student_set.count }} students enrolled. If you delete this course, these students will no longer be enrolled in it.
+                </div>
+                {% endif %}
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'course-list' %}" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Delete Course
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

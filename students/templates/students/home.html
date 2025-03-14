@@ -1,0 +1,39 @@
+{% extends 'students/base.html' %}
+
+{% block title %}Home - Student Management System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <h1 class="mb-4">Welcome to Student Management System</h1>
+        <p class="lead">A comprehensive platform to manage student information and courses.</p>
+        
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Students</h5>
+                        <p class="card-text">View, add, edit, and manage students enrolled in various courses.</p>
+                        <div class="d-grid gap-2">
+                            <a href="{% url 'student-list' %}" class="btn btn-primary">View Students</a>
+                            <a href="{% url 'student-add' %}" class="btn btn-outline-primary">Add Student</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Courses</h5>
+                        <p class="card-text">View, add, edit, and manage courses offered in the system.</p>
+                        <div class="d-grid gap-2">
+                            <a href="{% url 'course-list' %}" class="btn btn-primary">View Courses</a>
+                            <a href="{% url 'course-add' %}" class="btn btn-outline-primary">Add Course</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'students/base.html' %}
+
+{% block title %}Delete Student - Student Management System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card border-danger shadow">
+            <div class="card-header bg-danger text-white">
+                <h3 class="card-title mb-0">Delete Student</h3>
+            </div>
+            <div class="card-body">
+                <p class="lead">Are you sure you want to delete {{ student.user.first_name }} {{ student.user.last_name }}?</p>
+                <p class="text-muted">This action cannot be undone. This will delete the student account and all associated information.</p>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'student-detail' student.pk %}" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Delete Student
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'students/base.html' %}
+
+{% block title %}Courses - Student Management System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Courses</h1>
+            <a href="{% url 'course-add' %}" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> Add Course
+            </a>
+        </div>
+
+        {% if courses %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Code</th>
+                        <th>Description</th>
+                        <th>Students Enrolled</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course in courses %}
+                    <tr>
+                        <td>{{ course.name }}</td>
+                        <td>{{ course.code }}</td>
+                        <td>{{ course.description|truncatewords:10 }}</td>
+                        <td>{{ course.student_set.all|length }}</td>
+                        <td>
+                            <a href="{% url 'course-update' course.pk %}" class="btn btn-sm btn-warning">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <a href="{% url 'course-delete' course.pk %}" class="btn btn-sm btn-danger">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i> No courses found. 
+            <a href="{% url 'course-add' %}">Add a course</a> to get started.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+student_management_system: (v3)
+open folder in vs code, start git bash:
+
+python3 -m venv venv
+source venv/bin/activate  ------------(start)
+pip install django
+------------------
+
+django-admin startproject student_management .
+python manage.py startapp students
+python manage.py startapp accounts
+------------------
+student_management> settings.py:  
+  in INSTALLED_APPS[...] add students, accounts, crispy_forms, crispy_bootstrap5
+  add crispy template & login logout url
+
+student_management> urls.py: add paths in urlpatterns
+students> models.py: write classes Course and Student
+students> create forms.py: write classes CourseForm, StudentForm, UserRegistrationForm, 
+students> views.py: write class based views
+students> create urls.py: write paths in urlpatterns[...]
+
+accounts> create forms.py: write class UserRegistrationForm
+accounts> views.py: write class RegisterView
+accounts> create urls.py: add RegisterView to path in urlpatterns[]
+
+cerate templates:
+students>templates>students:
+  base.html, student_list.html, student_detail.html, student_form.html, student_confirm_delete.html,
+  course_list.html, course_form.html, 
+
+accounts>templates>accounts:
+  login.html, resgister.html, 
+
+----------------
+students> admin.py: register Student and Course
+accounts>admin.py: empty
+
+
+-----------------------------------
+pip install django django-crispy-forms crispy-bootstrap5
+
+python manage.py makemigrations students
+python manage.py migrate
+
+python manage.py createsuperuser
+-admin
+-admin@example.com
+-1234
+
+
+
+python manage.py runserver
+
+python manage.py flush
