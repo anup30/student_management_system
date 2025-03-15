@@ -21,7 +21,7 @@ class Course(models.Model):
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=15)
-    courses = models.ManyToManyField(Course)
+    courses = models.ManyToManyField(Course, blank=True)  # Optional courses
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -30,6 +30,10 @@ class Student(models.Model):
 
     def get_absolute_url(self):
         return reverse('student-detail', kwargs={'pk': self.pk})
+    # new add
+    def delete(self, *args, **kwargs):
+        self.user.delete()  # Delete related User
+        super().delete(*args, **kwargs)
     
 """
 from django.db.models.signals import pre_delete

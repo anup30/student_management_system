@@ -1,0 +1,42 @@
+student_management_system/
+├── manage.py
+├── student_management_system/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+├── accounts/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations/
+│   ├── models.py
+│   ├── forms.py
+│   ├── urls.py
+│   ├── views.py
+│   └── templates/
+│       └── accounts/
+│           ├── login.html
+│           └── register.html
+└── students/
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations/
+    ├── models.py
+    ├── forms.py
+    ├── urls.py
+    ├── views.py
+    └── templates/
+        └── students/
+            ├── base.html
+            ├── home.html
+            ├── student_list.html
+            ├── student_detail.html
+            ├── student_form.html
+            ├── student_confirm_delete.html
+            ├── course_list.html
+            ├── course_form.html
+            └── course_confirm_delete.html
+
