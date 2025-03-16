@@ -53,3 +53,5 @@ python manage.py createsuperuser
 python manage.py runserver
 
 python manage.py flush
+
+pip freeze > requirements.txt
