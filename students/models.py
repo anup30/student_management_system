@@ -30,17 +30,17 @@ class Student(models.Model):
 
     def get_absolute_url(self):
         return reverse('student-detail', kwargs={'pk': self.pk})
-    # new add
+    #new add
     def delete(self, *args, **kwargs):
         self.user.delete()  # Delete related User
         super().delete(*args, **kwargs)
-    
-"""
-from django.db.models.signals import pre_delete
+
+"""  
+# also worked
+from django.db.models.signals import post_delete
 from django.dispatch import receiver
 
-@receiver(pre_delete, sender=Student)
-def delete_user_on_student_delete(sender, instance, **kwargs):
-    user = instance.user
-    user.delete()
+@receiver(post_delete, sender=Student)
+def delete_user_when_student_deleted(sender, instance, **kwargs):
+    instance.user.delete()
 """

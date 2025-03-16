@@ -6,4 +6,5 @@ it still exists in database,  ie. in auth_user of db.sqlite3. how to fix this.
 github code: https://github.com/anup30/student_management_system
 the problem is also written in problem.txt there.
 
+solved by overriding delete method in Student model, alternatively using signals also worked, added in models.py
 
